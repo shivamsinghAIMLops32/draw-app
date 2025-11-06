@@ -1,4 +1,4 @@
-import { prisma } from "../prisma/client";
+import { prisma } from "@repo/database/client";
 import bcrypt from "bcryptjs";
 import jsonwebtoken from "jsonwebtoken";
 import {JWT_SECRET} from "@repo/backend-common/config"

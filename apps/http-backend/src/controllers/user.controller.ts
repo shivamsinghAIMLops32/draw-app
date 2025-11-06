@@ -7,11 +7,11 @@ import {
 } from "../helpers/user.helper.js";
 
 export const signupUser = async (
-  username: string,
+  name: string,
   password: string,
   email: string
 ) => {
-  if (!username || !password || !email) {
+  if (!name || !password || !email) {
     throw new Error("All fields are required");
   }
 
@@ -29,7 +29,7 @@ export const signupUser = async (
   const hashedPassword = hashPassword(password);
   const newUser = await prisma.user.create({
     data: {
-      username,
+      name,
       password: hashedPassword,
       email,
     },
