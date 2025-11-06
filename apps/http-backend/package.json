@@ -15,12 +15,12 @@
     "@types/jsonwebtoken": "^9.0.10",
     "bcryptjs": "^3.0.3",
     "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "@repo/database":"workspace:*"
   }, 
   "devDependencies": {
     "@repo/backend-common":"workspace:*",
-    "@repo/common":"workspace:*",
-    "@repo/database":"workspace:*"
+    "@repo/common":"workspace:*"
    
   },
   "keywords": [],

@@ -1,4 +1,4 @@
-import  prisma  from "@repo/database/client";
+import { prisma } from "@repo/database/client";
 import {
   checkUserExists,
   comparePassword,
@@ -14,8 +14,6 @@ export const signupUser = async (
   if (!username || !password || !email) {
     throw new Error("All fields are required");
   }
-
-  
 
   if (password.length < 6 || email.length < 6 || !email.includes("@")) {
     throw new Error(
