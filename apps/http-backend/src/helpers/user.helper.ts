@@ -1,6 +1,7 @@
 import { prisma } from "../prisma/client";
 import bcrypt from "bcryptjs";
 import jsonwebtoken from "jsonwebtoken";
+import {JWT_SECRET} from "@repo/backend-common/config"
 export const checkUserExists = async (email: string) => {
   try {
     const user = await prisma.user.findUnique({
@@ -22,7 +23,7 @@ export const comparePassword = (password: string, hashedPassword: string) => {
 };
 
 export const generateToken = (userId: string | number) => {
-  const token = jsonwebtoken.sign({ id: String(userId) }, "your_jwt_secret", {
+  const token = jsonwebtoken.sign({ id: String(userId) }, JWT_SECRET, {
     expiresIn: "1h",
   });
   return token;
@@ -30,7 +31,7 @@ export const generateToken = (userId: string | number) => {
 
 export const verifyToken = (token: string): any => {
   try {
-    const decoded = jsonwebtoken.verify(token, "your_jwt_secret");
+    const decoded = jsonwebtoken.verify(token, JWT_SECRET);
     return decoded;
   } catch (error) {
     throw new Error("Invalid token");

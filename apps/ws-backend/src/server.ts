@@ -1,6 +1,7 @@
+
 import { WebSocketServer } from "ws";
 import jsonwebtoken, { JwtPayload } from "jsonwebtoken";
-
+import {JWT_SECRET} from "@repo/backend-common/config";
 const wss = new WebSocketServer({ port: 8080 });
 
 const clients = new Map<string, Set<WebSocket>>();
@@ -17,7 +18,7 @@ wss.on("connection", (ws, request) => {
     ws.close(1008, "Missing token");
     return;
   }
-const decoded = jsonwebtoken.verify(token, "your_jwt_secret");
+  const decoded = jsonwebtoken.verify(token, JWT_SECRET);
   const userid = (decoded as JwtPayload)?.id;
   if (!userid) {
     ws.close(1008, "Invalid token");
